@@ -1,0 +1,27 @@
+{
+    "description": "PLARO change notices: what changed in the project's requirements since this key last heard, when a session opens and when a message is sent. Only the key is sent; nothing typed is read.",
+    "hooks": {
+        "SessionStart": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "\"${CLAUDE_PLUGIN_ROOT}\"/hooks/notice.sh session_start",
+                        "timeout": 3
+                    }
+                ]
+            }
+        ],
+        "UserPromptSubmit": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "\"${CLAUDE_PLUGIN_ROOT}\"/hooks/notice.sh prompt",
+                        "timeout": 3
+                    }
+                ]
+            }
+        ]
+    }
+}

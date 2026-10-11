@@ -1,0 +1,16 @@
+{
+    "name": "plaro-ai",
+    "owner": {
+        "name": "PLARO",
+        "url": "https://plaro.kr"
+    },
+    "description": "PLARO's Claude Code plugin: your project's agreed requirements and what changed, read-only, with change notices and planning commands.",
+    "plugins": [
+        {
+            "name": "plaro",
+            "source": "./plugins/plaro",
+            "description": "Your project's agreed requirements and what changed, from PLARO: read-only tools, change notices when a session opens and when you send a message, and commands to plan the work.",
+            "version": "1.0.0"
+        }
+    ]
+}

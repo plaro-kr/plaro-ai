@@ -1,0 +1,19 @@
+{
+    "name": "plaro",
+    "version": "1.0.0",
+    "description": "Your project's agreed requirements and what changed, from PLARO: read-only tools, change notices when a session opens and when you send a message, and the commands plan_changes · plan_project · check_acceptance.",
+    "author": {
+        "name": "PLARO",
+        "url": "https://plaro.kr"
+    },
+    "homepage": "https://plaro.kr",
+    "userConfig": {
+        "plaro_key": {
+            "type": "string",
+            "title": "PLARO connection key",
+            "description": "The plaro_dk_… key your PM made for you in PLARO (requirements tab → Export → Developer AI connection).",
+            "required": true,
+            "sensitive": true
+        }
+    }
+}
