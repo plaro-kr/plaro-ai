@@ -35,11 +35,18 @@ PLARO keeps a record of each call (which key, which tool, the outcome, how long)
 
 The PM can revoke your key in PLARO at any time; a key nobody uses for 90 days stops by itself.
 
+## License and trademarks
+
+The files in this repository are released under the MIT License (`LICENSE`). It covers these files only: using PLARO is governed by its [Terms of Service](https://plaro.kr/terms), and the PLARO name and logo are not licensed.
+
+Claude Code is a product of Anthropic. This plugin is made by PLARO and is not affiliated with, endorsed by or sponsored by Anthropic.
+
 ## Layout
 
 - `.claude-plugin/marketplace.json` — this repository as a plugin marketplace (`plaro-ai`).
 - `plugins/plaro/.claude-plugin/plugin.json` — the plugin, with the key asked at install (`userConfig`, sensitive).
 - `plugins/plaro/.mcp.json` — the MCP server, the key in the `Authorization` header.
 - `plugins/plaro/hooks/` — the session-start and message hooks (`notice.sh`, POSIX `sh` and `curl`).
+- `LICENSE` — MIT.
 
 This folder is kept in PLARO's main repository (`integrations/claude-plugin`) and copied to the public repository when it changes.
