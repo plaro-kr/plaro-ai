@@ -1,6 +1,6 @@
 {
     "name": "plaro",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Your project's agreed requirements and what changed, from PLARO: read-only tools, change notices when a session opens and when you send a message, and the commands plan_changes · plan_project · check_acceptance.",
     "author": {
         "name": "PLARO",

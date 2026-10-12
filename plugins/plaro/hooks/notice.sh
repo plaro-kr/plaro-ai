@@ -14,10 +14,16 @@ esac
 
 key="${CLAUDE_PLUGIN_OPTION_PLARO_KEY:-$PLARO_KEY}"
 [ -n "$key" ] || exit 0
-url="${PLARO_CHANGES_URL:-https://plaro.kr/api/dev-ai/v1/changes}"
+# PLARO_CHANGES_URL is for trying a local PLARO. Only plaro.kr or this machine is taken: a project's settings can set
+# environment variables, and the key must not go wherever one of them points.
+url="https://plaro.kr/api/dev-ai/v1/changes"
+case "${PLARO_CHANGES_URL:-}" in
+    *@* | *\\*) ;; # http://localhost:1@elsewhere/ goes elsewhere
+    https://plaro.kr/* | http://localhost:* | http://localhost/* | http://127.0.0.1:* | http://127.0.0.1/*) url="$PLARO_CHANGES_URL" ;;
+esac
 
 reply=$(printf 'Authorization: Bearer %s\n' "$key" \
-    | curl -s -m 2 -H @- -H 'User-Agent: plaro-claude-plugin/1.0' -w '\n%{http_code}' "$url?event=$event" 2>/dev/null) || exit 0
+    | curl -s -m 2 --proto '=https,http' -H @- -H 'User-Agent: plaro-claude-plugin/1.0' -w '\n%{http_code}' "$url?event=$event" 2>/dev/null) || exit 0
 status=$(printf '%s\n' "$reply" | tail -n 1)
 text=$(printf '%s\n' "$reply" | sed '$d')
 
