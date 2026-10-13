@@ -2,10 +2,7 @@
     "mcpServers": {
         "plaro": {
             "type": "http",
-            "url": "https://plaro.kr/mcp/v1",
-            "headers": {
-                "Authorization": "Bearer ${user_config.plaro_key}"
-            }
+            "url": "https://plaro.kr/mcp/v1"
         }
     }
 }
