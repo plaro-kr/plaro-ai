@@ -1,7 +1,7 @@
 {
     "name": "plaro",
-    "version": "1.1.0",
-    "description": "Your project's agreed requirements and what changed, from PLARO: read-only tools, change notices when you send a message, and the commands plan_changes · plan_project · check_acceptance. Sign in from /mcp with the address your PM connected.",
+    "version": "1.2.0",
+    "description": "Your project's agreed requirements and what changed, from PLARO: tools to read them, change notices when you send a message, the commands plan_changes · plan_project · check_acceptance, and — each call approved by you — questions for the PM, what was built, and (on your own PLARO account) passed acceptance checks. Sign in from /mcp: with your PLARO account, or with the address your PM connected.",
     "author": {
         "name": "PLARO",
         "url": "https://plaro.kr"

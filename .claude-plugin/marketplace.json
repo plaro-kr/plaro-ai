@@ -4,13 +4,13 @@
         "name": "PLARO",
         "url": "https://plaro.kr"
     },
-    "description": "PLARO's Claude Code plugin: your project's agreed requirements and what changed, read-only, with change notices and planning commands.",
+    "description": "PLARO's Claude Code plugin: your project's agreed requirements and what changed, with change notices, planning commands, and questions or reports left in PLARO with your approval.",
     "plugins": [
         {
             "name": "plaro",
             "source": "./plugins/plaro",
-            "description": "Your project's agreed requirements and what changed, from PLARO: read-only tools, change notices when you send a message, and commands to plan the work.",
-            "version": "1.1.0"
+            "description": "Your project's agreed requirements and what changed, from PLARO: tools to read them, change notices when you send a message, commands to plan the work, and questions or reports left in PLARO with your approval.",
+            "version": "1.2.0"
         }
     ]
 }
