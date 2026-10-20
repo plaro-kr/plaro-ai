@@ -25,6 +25,12 @@ There is no key to copy: Claude Code keeps the sign-in in your computer's secure
 
 Until you sign in, Claude Code marks the server as needing authentication, and the message hook reports an error on each message — sign in from `/mcp`. On a computer without a browser, copy the address Claude Code shows; if the redirect fails, paste the full address from the browser's bar into Claude Code.
 
+Use the plugin or a server added by hand (`claude mcp add … plaro https://plaro.kr/mcp/v1`), not both. With both, Claude Code keeps the one added by hand and hides the plugin's server, so the plugin's message hook reports an error on each message. If you added it by hand before, remove it first:
+
+```
+claude mcp remove plaro -s user
+```
+
 ## Which project
 
 Add the two lines PLARO gives you (project → Export → Developer AI connection) to the repository's instruction file (`CLAUDE.md`, or `AGENTS.md`) so every session checks PLARO before building. On your own account the first line carries the project's code (`plaro:7f3c9a12`): Claude names the project with it, and after that PLARO knows the folder you work in. Another repository of another project gets that project's two lines — no new sign-in. Without the lines, Claude asks you which project once.
