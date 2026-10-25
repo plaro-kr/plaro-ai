@@ -1,16 +1,16 @@
 {
     "name": "plaro-ai",
     "owner": {
-        "name": "PLARO",
+        "name": "Plaro",
         "url": "https://plaro.kr"
     },
-    "description": "PLARO's Claude Code plugin: your project's agreed requirements and what changed, with change notices, planning commands, and questions or reports left in PLARO with your approval.",
+    "description": "Plaro's Claude Code plugin: your project's agreed requirements and what changed, with change notices, planning commands, and questions or reports left in Plaro with your approval.",
     "plugins": [
         {
             "name": "plaro",
             "source": "./plugins/plaro",
-            "description": "Your project's agreed requirements and what changed, from PLARO: tools to read them, change notices when you send a message, commands to plan the work, and questions or reports left in PLARO with your approval.",
-            "version": "1.2.0"
+            "description": "Your project's agreed requirements and what changed, from Plaro: tools to read them, change notices when you send a message, commands to plan the work, and questions or reports left in Plaro with your approval.",
+            "version": "1.2.1"
         }
     ]
 }
