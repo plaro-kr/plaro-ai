@@ -1,0 +1,19 @@
+{
+    "name": "plaro-ai",
+    "interface": {
+        "displayName": "Plaro"
+    },
+    "plugins": [
+        {
+            "name": "plaro",
+            "source": {
+                "source": "local",
+                "path": "./openai/plaro"
+            },
+            "policy": {
+                "installation": "AVAILABLE"
+            },
+            "category": "Developer Tools"
+        }
+    ]
+}

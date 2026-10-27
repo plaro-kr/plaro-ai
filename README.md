@@ -59,12 +59,26 @@ The files in this repository are released under the MIT License (`LICENSE`). It 
 
 Claude Code is a product of Anthropic. This plugin is made by Plaro and is not affiliated with, endorsed by or sponsored by Anthropic.
 
+## Codex and ChatGPT
+
+`openai/plaro` is the same Plaro MCP server packaged for OpenAI's plugin directory, which ChatGPT and Codex share. It has no message hook (the directory does not take hooks), so in ChatGPT and Codex the change notice comes when the AI calls `get_notices` or `get_changes` — the two lines in `AGENTS.md` (see Which project) ask it to before building. In Codex:
+
+```
+codex plugin marketplace add plaro-kr/plaro-ai
+codex plugin add plaro@plaro-ai
+codex mcp login plaro
+```
+
+The sign-in is the same as above: your Plaro account, or the address your PM connected.
+
 ## Layout
 
 - `.claude-plugin/marketplace.json` — this repository as a plugin marketplace (`plaro-ai`).
 - `plugins/plaro/.claude-plugin/plugin.json` — the plugin.
 - `plugins/plaro/.mcp.json` — the MCP server (OAuth sign-in, no key).
 - `plugins/plaro/hooks/hooks.json` — the message hook (`type: "mcp_tool"`, calling `get_notices`).
+- `openai/plaro/plugin.json` · `openai/plaro/mcp.json` · `openai/plaro/assets/` — the package for OpenAI's plugin directory (ChatGPT and Codex): listing, review cases and the remote MCP server, no hooks.
+- `.agents/plugins/marketplace.json` — this repository as a Codex plugin marketplace.
 - `LICENSE` — MIT.
 
 This folder is kept in Plaro's main repository (`integrations/claude-plugin`) and copied to the public repository when it changes.

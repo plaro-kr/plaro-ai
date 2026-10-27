@@ -1,0 +1,117 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "plaro",
+    "version": "1.2.1",
+    "description": "Your project's agreed requirements and what changed, from Plaro: the current version, the changes between versions with their reasons, the questions still open with the client and the acceptance criteria not yet checked; a question for the PM or a built report, each with your approval.",
+    "author": {
+        "name": "Plaro",
+        "email": "hyunjaeyoo@plaro.kr",
+        "url": "https://plaro.kr"
+    },
+    "homepage": "https://plaro.kr/features/developer-ai?lang=en",
+    "repository": "https://github.com/plaro-kr/plaro-ai",
+    "license": "MIT",
+    "keywords": [
+        "requirements",
+        "client-projects",
+        "meetings",
+        "change-notices",
+        "planning"
+    ],
+    "extensions": {
+        "com.openai": {
+            "interface": {
+                "displayName": "Plaro",
+                "shortDescription": "Agreed requirements & changes",
+                "longDescription": "Plaro keeps a client project's agreed requirements as numbered versions. What changes in meetings, calls and chats becomes a new version only when the PM picks it, with the client's own words as the source. This plugin lets ChatGPT and Codex read that record, so the AI that builds the project works from the version that is live, not from memory.\n\nWhat it reads\n- The current requirements version: each requirement with its number, category and acceptance criteria.\n- What changed between versions: each requirement added, changed or removed, with before, after, the reason and where it came from.\n- Questions still open with the client, and the ones already settled.\n- Acceptance criteria not yet checked, and requirements that failed a check.\n- A search across the requirements.\n\nWhat it can leave in Plaro, only with your approval\n- A question for the PM when the requirements do not decide something.\n- A report of which requirements were built, with the commit.\n- On your own account, acceptance checks you confirmed as passing.\nNothing else can be changed from here: requirements, versions, the client's confirmation, amounts and dates stay in Plaro.\n\nSigning in\nConnect with your Plaro account: one sign-in reads the projects your account can see. A developer a PM invited signs in with the address the PM connected and a code mailed to it, and reads that one project.\n\nWhat is sent\nPlaro sends back only what the PM put into a requirements version or processed: no meeting or chat text, no amounts, no client names or contacts. Plaro keeps a record of each sign-in step and call (which account or connection, which tool, the outcome, when) for one year, never the content.\n\nPlaro is available in the United States, Canada, Australia, New Zealand, Singapore and Korea.",
+                "developerName": "Plaro",
+                "category": "Developer Tools",
+                "capabilities": [
+                    "Read the current requirements version",
+                    "See what changed between versions and why",
+                    "List questions still open with the client",
+                    "Find acceptance criteria not yet checked",
+                    "Search the requirements",
+                    "Ask the PM a question, with your approval",
+                    "Report what was built, with your approval"
+                ],
+                "websiteURL": "https://plaro.kr/?lang=en",
+                "supportURL": "https://github.com/plaro-kr/plaro-ai/issues",
+                "privacyPolicyURL": "https://plaro.kr/privacy?lang=en",
+                "termsOfServiceURL": "https://plaro.kr/terms?lang=en",
+                "defaultPrompt": [
+                    "What changed in my project's requirements since the last version?",
+                    "Which questions are still open with the client?",
+                    "Show the current requirements and their acceptance criteria."
+                ],
+                "brandColor": "#2B7FFF",
+                "brandColorDark": "#5C9DFF",
+                "composerIcon": "./assets/icon.png",
+                "logo": "./assets/icon.png"
+            },
+            "review": {
+                "test_cases": {
+                    "positive": [
+                        {
+                            "description": "Read the current requirements",
+                            "prompt": "Show me the current agreed requirements for my Plaro project.",
+                            "tools_triggered": "get_requirements",
+                            "expected_behavior": "Lists the live version of the sample project Online store redesign (for example R-1 Sign-up and login, R-4 Payments, R-6 Admin panel) with categories and acceptance criteria, and adds no requirement that is not there."
+                        },
+                        {
+                            "description": "See what changed between versions",
+                            "prompt": "What changed in the requirements since the first version?",
+                            "tools_triggered": "get_changes",
+                            "expected_behavior": "Reports the change from v1 to v2: Payments now covers card and PayPal, and the admin panel can cancel orders, each with before, after and the reason from the second requirements meeting."
+                        },
+                        {
+                            "description": "List open questions",
+                            "prompt": "Which questions are still open with the client?",
+                            "tools_triggered": "get_open_questions",
+                            "expected_behavior": "Lists the open question about connecting shipment tracking to the courier, with the client's words, and does not present it as decided."
+                        },
+                        {
+                            "description": "Search the requirements",
+                            "prompt": "Find the requirement about search in my Plaro project.",
+                            "tools_triggered": "search_requirements",
+                            "expected_behavior": "Returns the Search requirement (keyword search by product name) with its number."
+                        },
+                        {
+                            "description": "Ask the PM, with approval",
+                            "prompt": "Ask the PM in Plaro whether PayPal refunds need a button in the admin panel.",
+                            "tools_triggered": "ask_pm",
+                            "expected_behavior": "Asks the user to approve the call before it runs; after approval, leaves the question in Plaro and says it was sent. Nothing is written without approval."
+                        }
+                    ],
+                    "negative": [
+                        {
+                            "description": "Changing a requirement directly is not possible",
+                            "prompt": "Change the launch date in my Plaro requirements to next Friday."
+                        },
+                        {
+                            "description": "Unrelated request",
+                            "prompt": "Book me a flight to Tokyo for next week."
+                        },
+                        {
+                            "description": "Another account's project",
+                            "prompt": "Show me the requirements of a Plaro project from another company that I am not part of."
+                        }
+                    ]
+                },
+                "commerce": false,
+                "commerce_description": "Plaro's plugin does not sell products or process payments."
+            },
+            "publication": {
+                "countries": [
+                    "US",
+                    "CA",
+                    "AU",
+                    "NZ",
+                    "SG",
+                    "KR"
+                ],
+                "release_notes": "First release in the plugin directory: read a Plaro project's agreed requirements, the changes between versions, open questions and unchecked acceptance criteria, and leave a question for the PM or a built report with your approval."
+            }
+        }
+    }
+}
