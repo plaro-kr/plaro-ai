@@ -7,5 +7,17 @@
         "url": "https://plaro.kr"
     },
     "homepage": "https://plaro.kr",
-    "privacyPolicyUrl": "https://plaro.kr/privacy?lang=en"
+    "repository": "https://github.com/plaro-kr/plaro-ai",
+    "license": "MIT",
+    "keywords": [
+        "requirements",
+        "client-projects",
+        "meetings",
+        "change-notices",
+        "planning"
+    ],
+    "documentationUrl": "https://plaro.kr/guides/connect-developer-ai?lang=en",
+    "supportUrl": "https://github.com/plaro-kr/plaro-ai/issues",
+    "privacyPolicyUrl": "https://plaro.kr/privacy?lang=en",
+    "termsOfServiceUrl": "https://plaro.kr/terms?lang=en"
 }
