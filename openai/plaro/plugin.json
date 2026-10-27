@@ -2,7 +2,7 @@
     "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "plaro",
     "version": "1.2.1",
-    "description": "Your project's agreed requirements and what changed, from Plaro: the current version, the changes between versions with their reasons, the questions still open with the client and the acceptance criteria not yet checked; a question for the PM or a built report, each with your approval.",
+    "description": "Your project's agreed requirements and what changed, from Plaro: the current version, the changes between versions with their reasons, the questions still open with the client and the acceptance criteria not yet checked. It can also leave a question for the PM or a report of what was built.",
     "author": {
         "name": "Plaro",
         "email": "hyunjaeyoo@plaro.kr",
@@ -23,7 +23,7 @@
             "interface": {
                 "displayName": "Plaro",
                 "shortDescription": "Agreed requirements & changes",
-                "longDescription": "Plaro keeps a client project's agreed requirements as numbered versions. What changes in meetings, calls and chats becomes a new version only when the PM picks it, with the client's own words as the source. This plugin lets ChatGPT and Codex read that record, so the AI that builds the project works from the version that is live, not from memory.\n\nWhat it reads\n- The current requirements version: each requirement with its number, category and acceptance criteria.\n- What changed between versions: each requirement added, changed or removed, with before, after, the reason and where it came from.\n- Questions still open with the client, and the ones already settled.\n- Acceptance criteria not yet checked, and requirements that failed a check.\n- A search across the requirements.\n\nWhat it can leave in Plaro, only with your approval\n- A question for the PM when the requirements do not decide something.\n- A report of which requirements were built, with the commit.\n- On your own account, acceptance checks you confirmed as passing.\nNothing else can be changed from here: requirements, versions, the client's confirmation, amounts and dates stay in Plaro.\n\nSigning in\nConnect with your Plaro account: one sign-in reads the projects your account can see. A developer a PM invited signs in with the address the PM connected and a code mailed to it, and reads that one project.\n\nWhat is sent\nPlaro sends back only what the PM put into a requirements version or processed: no meeting or chat text, no amounts, no client names or contacts. Plaro keeps a record of each sign-in step and call (which account or connection, which tool, the outcome, when) for one year, never the content.\n\nPlaro is available in the United States, Canada, Australia, New Zealand, Singapore and Korea.",
+                "longDescription": "Plaro keeps a client project's agreed requirements as numbered versions. What changes in meetings, calls and chats becomes a new version only when the PM picks it, with the client's own words as the source. This plugin lets ChatGPT and Codex read that record, so the AI that builds the project works from the version that is live, not from memory.\n\nWhat it reads\n- The current requirements version: each requirement with its number, category and acceptance criteria.\n- What changed between versions: each requirement added, changed or removed, with before, after, the reason and where it came from.\n- Questions still open with the client, and the ones already settled.\n- Acceptance criteria not yet checked, and requirements that failed a check.\n- A search across the requirements.\n\nWhat it can leave in Plaro\n- A question for the PM when the requirements do not decide something.\n- A report of which requirements were built, with the commit.\n- On your own account, acceptance checks you confirmed as passing.\nThese are marked as write tools, so your AI app can ask you before each call (in Codex, default_tools_approval_mode = \"writes\" asks every time). Nothing else can be changed from here: requirements, versions, the client's confirmation, amounts and dates stay in Plaro.\n\nSigning in\nConnect with your Plaro account: one sign-in reads the projects your account can see. A developer a PM invited signs in with the address the PM connected and a code mailed to it, and reads that one project.\n\nWhat is sent\nPlaro sends back only what the PM put into a requirements version or processed: no meeting or chat text, no amounts, no client names or contacts. Plaro keeps a record of each sign-in step and call (which account or connection, which tool, the outcome, when) for one year, never the content.\n\nPlaro is available in the United States, Canada, Australia, New Zealand, Singapore and Korea.",
                 "developerName": "Plaro",
                 "category": "Developer Tools",
                 "capabilities": [
@@ -32,8 +32,8 @@
                     "List questions still open with the client",
                     "Find acceptance criteria not yet checked",
                     "Search the requirements",
-                    "Ask the PM a question, with your approval",
-                    "Report what was built, with your approval"
+                    "Leave a question for the PM",
+                    "Report what was built, with the commit"
                 ],
                 "websiteURL": "https://plaro.kr/?lang=en",
                 "supportURL": "https://github.com/plaro-kr/plaro-ai/issues",
@@ -68,7 +68,7 @@
                             "description": "List open questions",
                             "prompt": "Which questions are still open with the client?",
                             "tools_triggered": "get_open_questions",
-                            "expected_behavior": "Lists the open question about connecting shipment tracking to the courier, with the client's words, and does not present it as decided."
+                            "expected_behavior": "Lists what is still open, including connecting shipment tracking to the courier (with the client's words) and the missing search performance condition, and does not present them as decided. Questions already settled are shown with their answers."
                         },
                         {
                             "description": "Search the requirements",
@@ -77,10 +77,10 @@
                             "expected_behavior": "Returns the Search requirement (keyword search by product name) with its number."
                         },
                         {
-                            "description": "Ask the PM, with approval",
-                            "prompt": "Ask the PM in Plaro whether PayPal refunds need a button in the admin panel.",
+                            "description": "Leave a question for the PM",
+                            "prompt": "Ask the PM in Plaro whether guest checkout should also accept PayPal.",
                             "tools_triggered": "ask_pm",
-                            "expected_behavior": "Asks the user to approve the call before it runs; after approval, leaves the question in Plaro and says it was sent. Nothing is written without approval."
+                            "expected_behavior": "Calls ask_pm, a write tool (the app may ask the user to confirm it first); the question is left in Plaro as an open question under R-3 or R-4 and the reply says so. If the same question is already open, it says so instead of asking again. Nothing in the requirements changes."
                         }
                     ],
                     "negative": [
@@ -98,6 +98,7 @@
                         }
                     ]
                 },
+                "demo_recording_url": "https://github.com/plaro-kr/plaro-ai/releases/download/review-demo-2026-10-27/plaro-codex-demo.mp4",
                 "commerce": false,
                 "commerce_description": "Plaro's plugin does not sell products or process payments."
             },
@@ -110,7 +111,7 @@
                     "SG",
                     "KR"
                 ],
-                "release_notes": "First release in the plugin directory: read a Plaro project's agreed requirements, the changes between versions, open questions and unchecked acceptance criteria, and leave a question for the PM or a built report with your approval."
+                "release_notes": "First release in the plugin directory: read a Plaro project's agreed requirements, the changes between versions, open questions and unchecked acceptance criteria, and leave a question for the PM or a report of what was built."
             }
         }
     }

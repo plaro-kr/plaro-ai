@@ -69,7 +69,12 @@ codex plugin add plaro@plaro-ai
 codex mcp login plaro
 ```
 
-The sign-in is the same as above: your Plaro account, or the address your PM connected.
+The sign-in is the same as above: your Plaro account, or the address your PM connected. To have Codex ask before each call that leaves something in Plaro, add this to `~/.codex/config.toml`:
+
+```
+[plugins."plaro@plaro-ai".mcp_servers.plaro]
+default_tools_approval_mode = "writes"
+```
 
 ## Layout
 
