@@ -1,0 +1,25 @@
+name: Publish to the MCP Registry
+
+# The registry lets an organization namespace (io.github.plaro-kr/*) publish only with GitHub's OIDC token or an owner's
+# read:org token; the interactive `mcp-publisher login github` can't read organization roles. This is the OIDC route.
+# Run it by hand after raising "version" in server.json (a version can be published once).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install mcp-publisher 1.8.5
+        run: curl -fsSL https://github.com/modelcontextprotocol/registry/releases/download/v1.8.5/mcp-publisher_linux_amd64.tar.gz | tar xz mcp-publisher
+      - name: Validate server.json
+        run: ./mcp-publisher validate
+      - name: Log in with GitHub OIDC
+        run: ./mcp-publisher login github-oidc
+      - name: Publish
+        run: ./mcp-publisher publish

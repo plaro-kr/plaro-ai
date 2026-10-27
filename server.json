@@ -1,0 +1,27 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.plaro-kr/plaro",
+  "title": "Plaro",
+  "description": "Agreed client requirements, changes and open questions from Plaro, read by Claude Code and Codex.",
+  "version": "1.2.1",
+  "websiteUrl": "https://plaro.kr/features/developer-ai?lang=en",
+  "repository": {
+    "url": "https://github.com/plaro-kr/plaro-ai",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/plaro-kr/plaro-ai/main/plugins/plaro/.claude-plugin/icon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "1024x1024"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://plaro.kr/mcp/v1"
+    }
+  ]
+}
