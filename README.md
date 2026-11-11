@@ -1,5 +1,7 @@
 # Plaro for Claude Code
 
+> **Plaro has ended (November 2026).** The service at plaro.kr is shut down, so this plugin can no longer sign in or read anything. This repository is kept read-only for reference.
+
 Your project's agreed requirements and what changed, from [Plaro](https://plaro.kr), inside Claude Code.
 
 - **Tools to read** — `get_requirements`, `get_changes`, `get_open_questions`, `get_verification_gaps`, `search_requirements`, and `get_notices` (the change notice).

@@ -1,0 +1,22 @@
+name: Remove from the MCP Registry
+
+# Plaro ended in November 2026. This marks every published version of io.github.plaro-kr/plaro as deleted in the
+# official MCP Registry, with the same GitHub OIDC login the publish workflow uses. Run it by hand.
+# To undo: mcp-publisher status --status active --all-versions io.github.plaro-kr/plaro
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  unpublish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install mcp-publisher 1.8.5
+        run: curl -fsSL https://github.com/modelcontextprotocol/registry/releases/download/v1.8.5/mcp-publisher_linux_amd64.tar.gz | tar xz mcp-publisher
+      - name: Log in with GitHub OIDC
+        run: ./mcp-publisher login github-oidc
+      - name: Mark all versions deleted
+        run: ./mcp-publisher status --status deleted --all-versions --message "Plaro ended in November 2026; the service at plaro.kr is shut down." io.github.plaro-kr/plaro
